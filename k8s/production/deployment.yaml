@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    name: doc-swagger
+  name: doc-swagger
+spec:
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        name: doc-swagger
+    spec:
+      containers:
+        - name: doc-swagger
+          image: vizzuality/doc-swagger
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "0.5"
+              memory: "256M"
+            limits:
+              cpu: "1"
+              memory: "512M"
+          args:
+            - start
+          env:
+            - name: PORT
+              value: "3500"
+            - name: SWAGGER_URL
+              value: "https://api.resourcewatch.org/api/v1/doc/swagger"
+          ports:
+            - containerPort: 3500
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 3500
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 3500
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 15
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      name: doc-swagger

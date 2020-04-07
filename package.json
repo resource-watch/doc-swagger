@@ -1,0 +1,22 @@
+{
+  "name": "doc-swagger",
+  "version": "1.0.0",
+  "description": "Swagger UI for the RW API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": {
+    "name": "Vizzuality",
+    "email": "hello@vizzuality.com",
+    "url": "http://vizzuality.com/"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "~12"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.4"
+  }
+}

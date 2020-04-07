@@ -1,0 +1,14 @@
+version: "3"
+services:
+  develop:
+    build: .
+    ports:
+      - "3500:3500"
+    container_name: doc-swagger
+    environment:
+      PORT: 3500
+      SWAGGER_URL: "https://api.resourcewatch.org/api/v1/doc/swagger"
+    command: start
+    volumes:
+      - ./:/opt/doc-swagger/
+
