@@ -13,7 +13,7 @@ const options = {
   customCss: '.swagger-ui .topbar img { display: none }'
 }
 
-app.use('/', expressHealthcheck());
+app.use('/healthcheck', expressHealthcheck());
 
 app.use('/documentation/', swaggerUi.serve, swaggerUi.setup(null, options));
 
