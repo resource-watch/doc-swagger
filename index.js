@@ -12,7 +12,7 @@ const options = {
   customCss: '.swagger-ui .topbar img { display: none }'
 }
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(null, options));
+app.use('/documentation/', swaggerUi.serve, swaggerUi.setup(null, options));
 
 const port = process.env.PORT || 3500;
 
