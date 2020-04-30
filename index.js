@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const swaggerUi = require('swagger-ui-express');
+const logger = require('express-simple-logger')
+
+app.use(logger());
 
 const options = {
   swaggerOptions: {
@@ -9,7 +12,7 @@ const options = {
   customCss: '.swagger-ui .topbar img { display: none }'
 }
 
-app.use('/documentation', swaggerUi.serve, swaggerUi.setup(null, options));
+app.use('/', swaggerUi.serve, swaggerUi.setup(null, options));
 
 const port = process.env.PORT || 3500;
 
