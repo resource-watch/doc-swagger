@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const logger = require('express-simple-logger')
+const expressHealthcheck = require('express-healthcheck');
 
 app.use(logger());
 
@@ -11,6 +12,8 @@ const options = {
   },
   customCss: '.swagger-ui .topbar img { display: none }'
 }
+
+app.use('/', expressHealthcheck());
 
 app.use('/documentation/', swaggerUi.serve, swaggerUi.setup(null, options));
 
