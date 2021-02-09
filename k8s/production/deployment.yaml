@@ -32,7 +32,7 @@ spec:
           value: "3500"
         - name: SWAGGER_URL
           value: https://api.resourcewatch.org/api/v1/doc/swagger
-        image: vizzuality/doc-swagger
+        image: gfwdockerhub/doc-swagger
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
